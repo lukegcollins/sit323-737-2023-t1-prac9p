@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mdb-login-service
+  labels:
+    k8s-app: mdb-login-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: mdb-login-service
+  template:
+    metadata:
+      name: mdb-login-service
+      creationTimestamp: null
+      labels:
+        k8s-app: mdb-login-service
+    spec:
+      containers:
+        - name: mdb-login-service
+          image: lgcollins/mdb-login-service
+          resources: {}
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst

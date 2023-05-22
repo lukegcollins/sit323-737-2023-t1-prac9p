@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: math-api-server
+  labels:
+    k8s-app: math-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: mdb-math-service
+  template:
+    metadata:
+      name: mdb-math-service
+      creationTimestamp: null
+      labels:
+        k8s-app: mdb-math-service
+    spec:
+      containers:
+        - name: mdb-math-service
+          image: lgcollins/mdb-math-service
+          resources: {}
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
