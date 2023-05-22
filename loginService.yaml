@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: math-api-login-mongo
+  name: mdb-login-service
   labels:
-    k8s-app: math-api-login-mongo
+    k8s-app: mdb-login-service
 spec:
   ports:
     - name: tcp-49161-3000-4rrtm
@@ -11,7 +11,7 @@ spec:
       port: 49161
       targetPort: 3000
   selector:
-    k8s-app: math-api-login-mongo
+    k8s-app: mdb-login-service
   type: LoadBalancer
   sessionAffinity: None
   externalTrafficPolicy: Cluster

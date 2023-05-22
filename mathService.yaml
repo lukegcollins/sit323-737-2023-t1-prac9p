@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: math-api-server
+  name: mdb-math-service
   labels:
-    k8s-app: math-api-server
+    k8s-app: mdb-math-service
 spec:
   ports:
     - name: tcp-49162-3000-k7c85
@@ -11,7 +11,7 @@ spec:
       port: 49162
       targetPort: 3000
   selector:
-    k8s-app: math-api-server
+    k8s-app: mdb-math-service
   type: LoadBalancer
   sessionAffinity: None
   externalTrafficPolicy: Cluster

@@ -5,7 +5,6 @@ const port = 3000;
 const passport = require('passport');
 require('./passport.js')(passport);
 
-// Simulate authorization levels using binary bit flags to allow for easily fine tuning access to individual features
 const authorizationMap = new Map();
 authorizationMap.set("addition", 0b0001);
 authorizationMap.set("multiplication", 0b0010);
@@ -24,9 +23,13 @@ function division(a, b) { return a / b }
 
 function performMath(req, res, callback) {
     const { num1, num2 } = req.body;
-    if (isNaN(num1) || isNaN(num2)) return res.status(400).json({ status: 400, message: "Invalid parameters (non-numeric)" });
-    var result = callback(parseFloat(num1), parseFloat(num2));
-    res.status(200).json({ status: 200, type: callback.name, input: [num1, num2], result: result });
+    if (isNaN(num1) || isNaN(num2)) {
+        return res.status(400).json({ status: 400, message: "Invalid parameters (non-numeric)" });
+    }
+    return res.status(400).json({ status: 400, message: "Invalid parameters (non-numeric)" });
+}
+var result = callback(parseFloat(num1), parseFloat(num2));
+res.status(200).json({ status: 200, type: callback.name, input: [num1, num2], result: result });
 }
 
 function authorizeAction(req, res, callback) {
