@@ -22,7 +22,7 @@ This repository provides an implementation of a math and login service connected
 
 ## Installation
 Clone the repository with the following command:
-``
+`https://github.com/lukegcollins/sit323-737-2023-t1-prac9p`
 
 ### MongoDB Service
 First, we need to create the Kubernetes entities for the storage class and persistent volume. Run the following commands in your terminal:
